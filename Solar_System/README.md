@@ -1,0 +1,1 @@
+This project will display each planet of the solar system
