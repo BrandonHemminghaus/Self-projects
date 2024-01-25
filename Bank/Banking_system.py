@@ -3,38 +3,35 @@ Created on January 06, 2024
 Author: Brandon Hemminghaus
 '''
 
+"""
+Contains all the values for the user's bank details
+"""
 class Account_details:
-    """
-    Contains all the values for the user's bank details
-    """
     name = "Brandon Hemminghaus"
     account_number = 16483724
     balance = 0
 
+"""
+Displays all the account detail values at once
+"""
 def account():
-    """
-    Displays all the account detail values at once
-    """
     print("Account name: " + Account_details.name)
     print("Account number: " + str(Account_details.account_number))
     print("Account balance: " + str(Account_details.balance) + "\n")
 
+"""
+Adds to the balance value (depositing money)
+@param amount - the amount of money the user wishes to deposit
+"""
 def deposit(amount):
-    """
-    Adds to the balance value (depositing money)
-
-    :param int amount: the amount of money the user wishes to deposit
-    """
     Account_details.balance += amount
 
+"""
+Subtracts from the balance value (withdrawing money)    
+@param amount - the amount of money the user wishes to withdraw
+@return - return amount withdrawed or -1 if withdraw is bigger than balance
+"""
 def withdraw(amount):
-    """
-    Subtracts from the balance value (withdrawing money)
-
-    :param int amount: the amount of money the user wishes to withdraw
-    :return -1: if withdraw is bigger than balance
-    :return int amount: returns the amount withdrawed, confirming the process went throught
-    """
     balance = Account_details.balance
     check = balance - amount
     if check < 0:
