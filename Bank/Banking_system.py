@@ -7,41 +7,43 @@ Author: Brandon Hemminghaus
 Contains all the values for the user's bank details
 """
 class Account_details:
-    name = "Brandon Hemminghaus"
-    account_number = 16483724
-    balance = 0
+    def __init__(self,name,account_number,balance):
+        self.name = name
+        self.account_number = account_number
+        self.balance = balance
 
-"""
-Displays all the account detail values at once
-"""
-def account():
-    print("Account name: " + Account_details.name)
-    print("Account number: " + str(Account_details.account_number))
-    print("Account balance: " + str(Account_details.balance) + "\n")
+    """
+    Displays all the account detail values at once
+    """
+    def account(self):
+        print("Account name: " + self.name)
+        print("Account number: " + str(self.account_number))
+        print("Account balance: " + str(self.balance) + "\n")
 
-"""
-Adds to the balance value (depositing money)
-@param amount - the amount of money the user wishes to deposit
-"""
-def deposit(amount):
-    Account_details.balance += amount
+    """
+    Adds to the balance value (depositing money)
+    @param amount - the amount of money the user wishes to deposit
+    """
+    def deposit(self,amount):
+        self.balance += amount
 
-"""
-Subtracts from the balance value (withdrawing money)    
-@param amount - the amount of money the user wishes to withdraw
-@return - return amount withdrawed or -1 if withdraw is bigger than balance
-"""
-def withdraw(amount):
-    balance = Account_details.balance
-    check = balance - amount
-    if check < 0:
-        return -1
-    else:
-        Account_details.balance -= amount
-        return amount
+    """
+    Subtracts from the balance value (withdrawing money)    
+    @param amount - the amount of money the user wishes to withdraw
+    @return - return amount withdrawed or -1 if withdraw is bigger than balance
+    """
+    def withdraw(self,amount):
+        balance = self.balance
+        check = balance - amount
+        if check < 0:
+            return -1
+        else:
+            self.balance -= amount
+            return amount
 
 print("Weclome to Brandon's Banking Bridge")
 active = True
+banking = Account_details("Brandon Hemminghaus", 16483724,0)
 while(active == True):
     print("1: Account details")
     print("2: Deposit money")
@@ -50,14 +52,14 @@ while(active == True):
     choice = int(input("Please choose an option: "))
 
     if(choice == 1):
-        account()
+        banking.account()
     elif(choice == 2):
         d = int(input("Please input the amount to deposit: "))
-        deposit(d)
-        print("Current balance: " + str(Account_details.balance))
+        banking.deposit(d)
+        print("Current balance: " + str(banking.balance))
     elif(choice == 3):
         w = int(input("Please input the amount to withdraw: "))
-        w_final = withdraw(w)
+        w_final = banking.withdraw(w)
         if w_final == -1:
             print("Not enough money in account")
         else:
